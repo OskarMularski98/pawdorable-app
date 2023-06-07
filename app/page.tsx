@@ -22,7 +22,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-[#FFF9F5] min-h-screen flex flex-col gap-4 items-center justify-center">
+    <div className="min-h-screen flex flex-col gap-4 items-center justify-center">
       {hasAccount ? (
         <FormComponent
           setUser={setUser}
