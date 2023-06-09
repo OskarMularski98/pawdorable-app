@@ -10,11 +10,12 @@ import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import pets from "../config/Pets";
 import donations from "../config/Donations";
+import guides from "../config/guides";
 
 const BoxDetails = () => {
   return (
     <div className=" flex flex-col">
-      <div>Nearby</div>
+      <div className=" font-bold">Nearby</div>
       <div className="flex justify-center items-center gap-5">
         <div
           id="swiper-back"
@@ -30,8 +31,6 @@ const BoxDetails = () => {
           spaceBetween={100}
           pagination={{ clickable: true }}
           loop={true}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
           className=" rounded-[19px]"
         >
           <div>
@@ -64,7 +63,7 @@ const BoxDetails = () => {
 const BoxDonations = () => {
   return (
     <div className=" flex flex-col">
-      <div>Last Donations</div>
+      <div className=" font-bold">Last Donations</div>
       <div className="flex justify-center items-center gap-5">
         <div
           id="swiper-back2"
@@ -80,8 +79,6 @@ const BoxDonations = () => {
           spaceBetween={100}
           pagination={{ clickable: true }}
           loop={true}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
           className=" rounded-[19px]"
         >
           <div>
@@ -108,11 +105,57 @@ const BoxDonations = () => {
   );
 };
 
+const BoxGuides = () => {
+  return (
+    <div className=" flex flex-col">
+      <div className=" font-bold">Guides</div>
+      <div className="flex justify-center items-center gap-5">
+        <div
+          id="swiper-back3"
+          className="bg-[#FF404D] cursor-pointer px-2 py-1 rounded-full"
+        >
+          <FontAwesomeIcon color="white" icon={faArrowLeft} />
+        </div>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          slidesPerView={3}
+          autoplay
+          navigation={{ nextEl: "#swiper-forward3", prevEl: "#swiper-back3" }}
+          spaceBetween={100}
+          pagination={{ clickable: true }}
+          loop={true}
+          className=" rounded-[19px]"
+        >
+          <div>
+            {guides.map((guide) => (
+              <SwiperSlide key={guide.id}>
+                <BoxComponent
+                  type={"guides"}
+                  title={guide.title}
+                  img={guide.img}
+                />
+              </SwiperSlide>
+            ))}
+          </div>
+        </Swiper>
+        <div
+          id="swiper-forward3"
+          className="bg-[#FF404D] cursor-pointer px-2 py-1 rounded-full"
+        >
+          <FontAwesomeIcon color="white" icon={faArrowRight} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const BoxCarousel = ({ type }) => {
   if (type === "details") {
     return <BoxDetails />;
   } else if (type === "donations") {
     return <BoxDonations />;
+  } else if (type === "guides") {
+    return <BoxGuides />;
   }
 };
 
