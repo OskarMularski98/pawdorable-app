@@ -11,7 +11,7 @@ const FormComponent = ({
   return (
     <form className=" flex flex-col gap-4 justify-center w-[400px]">
       <div className=" flex justify-center">
-        <img className="w-2/3" src="/logo-log-in.svg" alt="" />
+        <img className="w-2/3" src="/logo.svg" alt="" />
       </div>
       <input
         className="py-4 px-6 mx-2 shadow-lg rounded-3xl"
