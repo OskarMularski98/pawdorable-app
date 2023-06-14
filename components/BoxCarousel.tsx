@@ -8,14 +8,25 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import pets from "../config/Pets";
-import donations from "../config/Donations";
-import guides from "../config/guides";
+import pets from "@/config/pets";
+import donations from "@/config/donations";
+import guides from "@/config/guides";
+import { useRouter } from "next/navigation";
 
 const BoxDetails = () => {
+  const router = useRouter();
+
   return (
     <div className=" flex flex-col">
-      <div className=" font-bold">Nearby</div>
+      <div className=" flex flex-row justify-between">
+        <div className=" font-bold">Nearby</div>
+        <button
+          className=" text-[#FF404D] font-bold"
+          onClick={() => router.push("/pets")}
+        >
+          Show all
+        </button>
+      </div>
       <div className="flex justify-center items-center gap-5">
         <div
           id="swiper-back"
